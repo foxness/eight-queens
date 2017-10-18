@@ -35,8 +35,7 @@ namespace EightQueens
 
                 for (int ox = -1; ox <= 1; ++ox)
                 {
-                    int i = 1;
-                    while (true)
+                    for (int i = 1; true; ++i)
                     {
                         int nx = x + ox * i;
                         int ny = currentRow - i;
@@ -53,8 +52,6 @@ namespace EightQueens
                         {
                             break;
                         }
-
-                        ++i;
                     }
 
                     if (!queenFits)

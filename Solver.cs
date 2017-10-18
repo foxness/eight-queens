@@ -4,13 +4,6 @@ namespace EightQueens
 {
     public static class Solver
     {
-        private static int[,] upperNeighbors =
-        {
-            { -1, -1 },
-            { 0, -1 },
-            { 1, -1 }
-        };
-
         public static List<bool[,]> GetSolutions(int N)
         {
             var field = new bool[N, N];
@@ -40,13 +33,13 @@ namespace EightQueens
             {
                 bool queenFits = true;
 
-                for (int i = 0; i < upperNeighbors.GetLength(0); ++i)
+                for (int ox = -1; ox <= 1; ++ox)
                 {
-                    int c = 1;
+                    int i = 1;
                     while (true)
                     {
-                        int nx = x + (upperNeighbors[i, 0] * c);
-                        int ny = currentRow + (upperNeighbors[i, 1] * c);
+                        int nx = x + ox * i;
+                        int ny = currentRow - i;
 
                         if (nx >= 0 && nx < N && ny >= 0 && ny < N)
                         {
@@ -61,7 +54,7 @@ namespace EightQueens
                             break;
                         }
 
-                        ++c;
+                        ++i;
                     }
 
                     if (!queenFits)
